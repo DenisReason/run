@@ -1,0 +1,23 @@
+{
+  "name": "day-10",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./View/index.js",
+    "dev": "nodemon --inspect ./View/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonparser": "^1.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.2.0",
+    "nodemon": "^3.0.1"
+  }
+}
