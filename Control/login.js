@@ -1,16 +1,12 @@
 import express from 'express'
 import bcrypt from 'bcryptjs'
+import cors from 'cors'
 import { GetuserByUsername } from '../Model/ConnectToDb.js'
 import { genToken } from '../Model/jwt.js'
 export const login = express.Router()
 
+login.use(cors())
 
-login.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*'); // Cho phép mọi nguồn gốc
-    res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, POST'); // Cho phép các phương thức
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type'); // Cho phép các headers
-    next();
-  });
 
 login.post("/login", async (req, res, next) => {
     const User = await GetuserByUsername(req.body.username)
