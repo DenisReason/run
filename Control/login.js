@@ -1,5 +1,5 @@
 import express from 'express'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import { GetuserByUsername } from '../Model/ConnectToDb.js'
 import { genToken } from '../Model/jwt.js'
 export const login = express.Router()
