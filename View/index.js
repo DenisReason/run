@@ -2,6 +2,7 @@ import express from 'express'
 import {registerRouter} from '../Control/register.js';
 import { login } from '../Control/login.js';
 import dotenv from 'dotenv'
+import cors from 'cors'
 dotenv.config()
 const PORT = process.env.PORT||3000
 const Main = express()
