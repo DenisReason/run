@@ -1,10 +1,10 @@
 import express, { json } from "express"
 import { CreateUserAccount } from "../Model/ConnectToDb.js"
 import bcrypt from 'bcryptjs'
-import cors from 'cors'
+
 export const registerRouter = express.Router()
 
-registerRouter.use(cors())
+
 registerRouter.use(express.json())
 
 registerRouter.post("/Register", async (req, res, next)=>{
