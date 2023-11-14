@@ -24,6 +24,7 @@ export const CreateUserAccount = async (newUser) => {
         const collection = db.collection("UsersAccount")
         await collection.insertOne(newUser)
         console.log("Create Account Done")
+        Client.close()
     } catch (error) {
         console.log(error);
     }
