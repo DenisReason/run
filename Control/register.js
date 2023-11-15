@@ -8,8 +8,9 @@ export const registerRouter = express.Router()
 registerRouter.use(express.json())
 
 registerRouter.post("/Register", async (req, res, next)=>{
-    console.log(GetuserByUsername(req.body.username))
-    if(GetuserByUsername(req.body.username)){
+    const isUsernameAlready =await GetuserByUsername(req.body.username)
+    console.log(isUsernameAlready);
+    if(isUsernameAlready){
         res.status(409).send("This account has already existed")
         return
     }
