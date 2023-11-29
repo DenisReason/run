@@ -13,9 +13,9 @@ export const genToken = async (req, res, next) => {
     return token
 }
 
-export const Checktoken = async (token) => {
+export const Checktoken = async (req, res, next) => {
     try {
-        // Sử dụng hàm verify từ thư viện jsonwebtoken
+        const token = req.body.token
         const decodedToken =  await jwt.verify(token, secretKey);
 
         // Trả về đối tượng chứa thông tin xác minh
