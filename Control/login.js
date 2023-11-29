@@ -14,7 +14,7 @@ login.post("/login", async(req, res, next)=>{
     const Result = await bcrypt.compare(req.body.password, User.password)
     if(Result){
         const token = await genToken(req, res, next)
-        res.status(200).send(token)
+        res.send(token)
     }
     else{
         res.send("Incorrect account name or password")
