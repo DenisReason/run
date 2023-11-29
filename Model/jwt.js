@@ -16,6 +16,9 @@ export const genToken = async (req, res, next) => {
 export const Checktoken = async (req, res, next) => {
     try {
         const token = req.body.token
+        console.log('====================================');
+        console.log(token);
+        console.log('====================================');
         const decodedToken =  await jwt.verify(token, secretKey);
 
         // Trả về đối tượng chứa thông tin xác minh
