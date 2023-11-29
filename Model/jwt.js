@@ -16,13 +16,17 @@ export const genToken = async (req, res, next) => {
 export const Checktoken = async (req, res, next) => {
     try {
         const token = req.body.token
-        console.log('====================================');
-        console.log(token);
-        console.log('====================================');
-        const decodedToken =  await jwt.verify(token, secretKey);
+        await jwt.verify(token, secretKey,(err, decode)=>{
+            if(err){
+                console.log(err);
+                res.status(500).send("Lỗi xác thực JWT")
+            }
+            if(decode){
+                res.status(200).send(decode)
+            }
+        });
 
-        // Trả về đối tượng chứa thông tin xác minh
-        return decodedToken;
+        // Trả về đối tượng chứa thông tin xác min
     } catch (error) {
         // Xử lý lỗi nếu có
         console.error('Lỗi xác minh token:', error);
