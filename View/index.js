@@ -10,9 +10,10 @@ const PORT = process.env.PORT||3000
 const Main = express()
 
 Main.use(cors())
+Main.use(LoginToken)
 Main.use(registerRouter)
 Main.use(login)
-Main.use(LoginToken)
+
 
 
 Main.listen(PORT,()=>{
