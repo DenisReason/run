@@ -16,6 +16,7 @@ export const genToken = async (req, res, next) => {
 export const Checktoken = async (req, res, next) => {
     try {
         const token = req.body.token
+        console.log(token);
         await jwt.verify(token, secretKey,(err, decode)=>{
             if(err){
                 console.log(err);
