@@ -23,6 +23,7 @@ export const Checktoken = async (req, res, next) => {
                 res.status(500).send("Lỗi xác thực JWT:",token)
             }
             else {
+                console.log("here")
                 res.status(200).send(decode)
             }
         });
