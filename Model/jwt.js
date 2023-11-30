@@ -21,7 +21,7 @@ export const Checktoken = async (req, res, next) => {
                 console.log(err);
                 res.status(500).send("Lỗi xác thực JWT")
             }
-            if(decode){
+            else {
                 res.status(200).send(decode)
             }
         });
