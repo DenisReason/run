@@ -20,7 +20,7 @@ export const Checktoken = async (req, res, next) => {
         await jwt.verify(token, secretKey,(err, decode)=>{
             if(err){
                 console.log(err);
-                res.status(500).send("Lỗi xác thực JWT")
+                res.status(500).send("Lỗi xác thực JWT:",token)
             }
             else {
                 res.status(200).send(decode)
