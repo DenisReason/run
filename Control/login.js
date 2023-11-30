@@ -3,6 +3,7 @@ import bcrypt from 'bcryptjs'
 import { GetuserByUsername } from '../Model/ConnectToDb.js'
 import { genToken } from '../Model/jwt.js'
 export const login = express.Router()
+login.use(express.json())
 
 login.post("/login", async(req, res, next)=>{
     const User = await GetuserByUsername(req.body.username)
