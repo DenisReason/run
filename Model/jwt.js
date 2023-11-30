@@ -9,7 +9,7 @@ export const genToken = async (req, res, next) => {
         "username": req.body.username,
         "password": req.body.password
     }
-    const token = await jwt.sign(payload, secretKey, { expiresIn: "30s" })
+    const token = await jwt.sign(payload, secretKey)
     return token
 }
 
