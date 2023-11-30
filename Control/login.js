@@ -12,6 +12,7 @@ login.post("/login", async(req, res, next)=>{
         return
     }
     const Result = await bcrypt.compare(req.body.password, User.password)
+    console.log("Result:", Result);
     if(Result){
         const token = await genToken(req, res, next)
         res.send(token)
