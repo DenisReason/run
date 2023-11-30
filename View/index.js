@@ -9,8 +9,6 @@ dotenv.config()
 const PORT = process.env.PORT||3000
 const Main = express()
 
-Main.use(express.json)
-
 Main.use(cors())
 Main.use(LoginToken)
 Main.use(registerRouter)
