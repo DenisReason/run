@@ -23,8 +23,7 @@ export const Checktoken = async (token) => {
             }
             else {
                 console.log("here")
-                console.log(decode);
-                return true
+                return decode
             }
         });
 
