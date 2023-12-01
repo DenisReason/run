@@ -13,18 +13,18 @@ export const genToken = async (req, res, next) => {
     return token
 }
 
-export const Checktoken = async (req, res, next) => {
+export const Checktoken = async (token) => {
     try {
-        const token = req.body.token
         console.log(token);
         await jwt.verify(token, secretKey,(err, decode)=>{
             if(err){
                 console.log(err);
-                res.status(500).send("Lỗi xác thực JWT:",token)
+                return false
             }
             else {
                 console.log("here")
-                res.status(200).send(decode)
+                console.log(decode);
+                return true
             }
         });
 
