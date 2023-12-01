@@ -13,9 +13,9 @@ export const genToken = async (req, res, next) => {
     return token
 }
 
-export const Checktoken = async (token) => {
+export const Checktoken = async (req ,res, next) => {
     try {
-        console.log(token);
+        let token = req.body.token
         await jwt.verify(token, secretKey,(err, decode)=>{
             if(err){
                 console.log(err);
@@ -26,7 +26,7 @@ export const Checktoken = async (token) => {
                 console.log('====================================');
                 console.log("decode:", decode);
                 console.log('====================================');
-                return decode
+                res.status(200).send(decode)
             }
         });
 

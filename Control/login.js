@@ -9,17 +9,9 @@ login.post("/login", async (req, res, next) => {
     
     console.log(req.body.token);
     let token = req.body.token
+    console.log(typeof token);
     if (token) {
-        
-        const state = await Checktoken(token)
-        console.log('====================================');
-        console.log(state);
-        console.log('====================================');
-        res.status(200).json(state)
-        //  if(state){
-        //     console.log("finish");
-        //      res.status(200).send("oke step 1: ",state)
-        // }
+        await Checktoken(req, res, next)
         return
     }
     else {
