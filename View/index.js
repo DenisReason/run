@@ -4,7 +4,6 @@ import { login } from '../Control/login.js';
 
 import dotenv from 'dotenv'
 import cors from 'cors'
-import {LoginToken} from '../Control/logintoken.js';
 dotenv.config()
 const PORT = process.env.PORT||3000
 const Main = express()
