@@ -23,6 +23,9 @@ export const Checktoken = async (token) => {
             }
             else {
                 console.log("here")
+                console.log('====================================');
+                console.log("decode:", decode);
+                console.log('====================================');
                 return decode
             }
         });

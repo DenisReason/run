@@ -6,16 +6,19 @@ export const login = express.Router()
 login.use(express.json())
 
 login.post("/login", async (req, res, next) => {
-    console.log('====================================');
+    
     console.log(req.body.token);
-    console.log('====================================');
-    if (req.body.token) {
-        const token = req.body.token
-        const state = Checktoken(token)
-        res.status(200).send("state: ", state)
-        // if(state!=null){
+    let token = req.body.token
+    if (token) {
+        
+        const state = await Checktoken(token)
+        console.log('====================================');
+        console.log(state);
+        console.log('====================================');
+        res.status(200).json(state)
+        //  if(state){
         //     console.log("finish");
-        //     res.status(200).send("oke step 1: ",state)
+        //      res.status(200).send("oke step 1: ",state)
         // }
         return
     }
