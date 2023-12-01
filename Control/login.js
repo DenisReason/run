@@ -14,7 +14,7 @@ login.post("/login", async(req, res, next)=>{
         const state = Checktoken(token)
         if(state){
             console.log("finish");
-            res.status(200).send("oke step 1")
+            res.status(200).send("oke step 1: ",state)
         }
     }
     const User = await GetuserByUsername(req.body.username)
