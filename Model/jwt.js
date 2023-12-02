@@ -34,6 +34,6 @@ export const Checktoken = async (req ,res, next) => {
     } catch (error) {
         // Xử lý lỗi nếu có
         console.error('Lỗi xác minh token:', error);
-        return null;
+        res.status(500).send(error)
     }
 }
