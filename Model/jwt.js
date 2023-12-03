@@ -18,15 +18,19 @@ export const Checktoken = async (req ,res, next) => {
         let token = req.body.token
         await jwt.verify(token, secretKey,(err, decode)=>{
             if(err){
-                console.log(err);
-                return false
+                res.status(500).send("Token Wrong!!")
             }
             else {
                 console.log("here")
                 console.log('====================================');
                 console.log("decode:", decode);
+                const newpayload = {username:decode.username,password:decode.password}
                 console.log('====================================');
-                res.status(200).send(decode)
+                const  Newtoken = jwt.sign(newpayload,secretKey,{expiresIn:"30s"})
+                console.log(Newtoken);
+                if(Newtoken){
+                    res.status(200).send(Newtoken)
+                }
             }
         });
 
@@ -34,6 +38,6 @@ export const Checktoken = async (req ,res, next) => {
     } catch (error) {
         // Xử lý lỗi nếu có
         console.error('Lỗi xác minh token:', error);
-        res.status(500).send(error)
+        res.status(500).error(error)
     }
 }

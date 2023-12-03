@@ -6,10 +6,8 @@ export const login = express.Router()
 login.use(express.json())
 
 login.post("/login", async (req, res, next) => {
-    
-    console.log(req.body.token);
     let token = req.body.token
-    console.log(typeof token);
+    
     if (token) {
         await Checktoken(req, res, next)
         return
