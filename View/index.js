@@ -10,13 +10,13 @@ import cors from 'cors'
 dotenv.config()
 const PORT = process.env.PORT||3000
 const Main = express()
-
+const server = http.createServer(Main)
+const io = new Server(server)
 Main.use(cors())
 Main.use(registerRouter)
 Main.use(login)
 
-const server = http.createServer(Main)
-const io = new Server(server)
+
 
 io.on('connection', (socket)=>{
     console.log("Client Connect: ", socket.id);
