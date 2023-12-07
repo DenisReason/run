@@ -1,6 +1,9 @@
 import express from 'express'
 import {registerRouter} from '../Control/register.js';
 import { login } from '../Control/login.js';
+import { Server} from 'socket.io';
+import http from 'http'
+
 
 import dotenv from 'dotenv'
 import cors from 'cors'
@@ -12,8 +15,20 @@ Main.use(cors())
 Main.use(registerRouter)
 Main.use(login)
 
+const server = http.createServer(Main)
+const io = new Server(server)
+
+io.on('connection', (socket)=>{
+    console.log("Client Connect: ", socket.id);
+
+    socket.on('message', (msg)=>{
+        console.log('message: ',msg);
+        socket.emit('message', (msg))
+    })
+})
 
 
-Main.listen(PORT,()=>{
+
+server.listen(PORT,()=>{
     console.log(`App is running on port ${PORT}`);
 })
